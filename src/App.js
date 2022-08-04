@@ -10,10 +10,11 @@ function App() {
   const [notes, setNotes] = useState(JSON.parse(localStorage.notes) || []);
   const [activeNote, setActiveNote] = useState(false);
 
-
+/*  AUTOMATIC LOCALSTORAGE SAVING (no click button):
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes)); 
   }, [notes]);
+*/
 
   const onAddNote = () => {
     const newNote = {
@@ -42,6 +43,11 @@ function App() {
     setNotes(notes.filter((note) => note.id !== idToDelete))
   };
 
+  const onSaveNote = () => {
+    localStorage.setItem("notes", JSON.stringify(notes)); 
+    console.log(notes)
+  };
+
   const getActiveNote = () => {
     return notes.find((note) => note.id === activeNote);
   };
@@ -53,9 +59,9 @@ function App() {
         onAddNote={onAddNote} 
         onDeleteNote={onDeleteNote} 
         activeNote={activeNote}
-        setActiveNote={setActiveNote}
+        setActiveNote={setActiveNote}        
       />
-      <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} />
+      <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} onSaveNote={onSaveNote} />
     </div>
   );  
 

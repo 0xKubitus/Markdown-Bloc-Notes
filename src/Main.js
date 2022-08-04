@@ -1,7 +1,7 @@
 import Showdown from 'showdown';
 const converter = new Showdown.Converter();
 
-export default function Main({ activeNote, onUpdateNote }) {
+export default function Main({ activeNote, onUpdateNote, onSaveNote }) {
   const onEditField = (key, value) => {
     onUpdateNote( {
       ...activeNote,
@@ -24,8 +24,7 @@ export default function Main({ activeNote, onUpdateNote }) {
       </div>
 
       <div className="app-main-note-edit">
-        <input 
-          type="text" 
+        <input type="text" 
           id="title" 
           value={activeNote.title} 
           onChange={(event) => onEditField("title", event.target.value)} 
@@ -38,6 +37,8 @@ export default function Main({ activeNote, onUpdateNote }) {
           value={activeNote.body} 
           onChange={(event) => onEditField("body", event.target.value)} 
         />
+
+        <button onClick={onSaveNote}>Save Note</button>
       </div>
     </div>
 
