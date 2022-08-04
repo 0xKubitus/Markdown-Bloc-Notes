@@ -1,3 +1,6 @@
+import Showdown from 'showdown';
+const converter = new Showdown.Converter();
+
 export default function Main({ activeNote, onUpdateNote }) {
   const onEditField = (key, value) => {
     onUpdateNote( {
@@ -7,13 +10,17 @@ export default function Main({ activeNote, onUpdateNote }) {
     });
   };
 
+  function createMarkup() {
+    return {__html: converter.makeHtml(activeNote.body)};
+  };
+
   if(!activeNote) return <div className="no-active-note">No note selected yet</div>
 
   return (
     <div className="app-main">
       <div className="app-main-note-preview">
         <h1 className="preview-title">{activeNote.title}</h1>
-        <div className="markdown-preview">{activeNote.body}</div>
+        <div className="markdown-preview" dangerouslySetInnerHTML={createMarkup()} />
       </div>
 
       <div className="app-main-note-edit">
