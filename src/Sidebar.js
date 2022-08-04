@@ -1,4 +1,7 @@
 export default function Sidebar({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote }) {
+  
+  const sortedNotes = notes.sort((a,b) => b.lastModified - a.lastModified);
+  
   return (
     <div className="app-sidebar">
 
@@ -8,7 +11,7 @@ export default function Sidebar({ notes, onAddNote, onDeleteNote, activeNote, se
       </div>
 
       <div className="app-sidebar-notes">
-        {notes.map((note) => (
+        {sortedNotes.map((note) => (
 
           <div className={`app-sidebar-note ${note.id === activeNote && "active"}`} onClick={() => setActiveNote(note.id)}>
 
