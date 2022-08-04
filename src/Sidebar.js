@@ -1,4 +1,4 @@
-export default function Sidebar({ notes, onAddNote }) {
+export default function Sidebar({ notes, onAddNote, onDeleteNote }) {
   return (
     <div className="app-sidebar">
 
@@ -13,12 +13,18 @@ export default function Sidebar({ notes, onAddNote }) {
           <div className="app-sidebar-note">
 
             <div className="sidebar-note-title">
-              <strong>TITLE</strong>
-              <button>Delete</button>
+              <strong>{note.title}</strong>
+              <button onClick={() => onDeleteNote(note.id)}>Delete</button>
             </div>
 
-            <p>Note preview</p>
-            <small className="note-meta">Last modified [date]</small>
+            <p>{note.body && note.body.substr(0, 100) + "..."}</p>
+
+            <small className="note-meta">
+              Last modified: {new Date (note.lastModified).toLocaleDateString("fr-FR", {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </small>
           
           </div>
         ))}
