@@ -1,4 +1,4 @@
-export default function Sidebar() {
+export default function Sidebar({ notes }) {
   return (
     <div className="app-sidebar">
 
@@ -8,18 +8,20 @@ export default function Sidebar() {
       </div>
 
       <div className="app-sidebar-notes">
-        <div className="app-sidebar-note">
+        {notes.map((note) => (
 
-          <div className="sidebar-note-title">
-            <strong>TITLE</strong>
-            <button>Delete</button>
+          <div className="app-sidebar-note">
+
+            <div className="sidebar-note-title">
+              <strong>TITLE</strong>
+              <button>Delete</button>
+            </div>
+
+            <p>Note preview</p>
+            <small className="note-meta">Last modified [date]</small>
+          
           </div>
-
-          <p>Note preview</p>
-
-          <small className="note-meta">Last modified [date]</small>
-        
-        </div>
+        ))}
       </div>
 
     </div>
