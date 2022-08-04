@@ -8,6 +8,8 @@ import './App.css';
 
 function App() {
   const [notes, setNotes] = useState([]);
+  const [activeNote, setActiveNote] = useState(false);
+
 
   const onAddNote = () => {
     const newNote = {
@@ -29,7 +31,10 @@ function App() {
       <Sidebar 
         notes={notes} 
         onAddNote={onAddNote} 
-        onDeleteNote={onDeleteNote} />
+        onDeleteNote={onDeleteNote} 
+        activeNote={activeNote}
+        setActiveNote={setActiveNote}
+      />
       <Main />
     </div>
   );  
