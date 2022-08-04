@@ -1,7 +1,7 @@
 export default function Main({ activeNote, onUpdateNote }) {
   const onEditField = (key, value) => {
     onUpdateNote( {
-      id: activeNote.id,
+      ...activeNote,
       [key]: value,
       lastModified: Date.now(),
     });
@@ -12,8 +12,8 @@ export default function Main({ activeNote, onUpdateNote }) {
   return (
     <div className="app-main">
       <div className="app-main-note-preview">
-        <h1 className="preview-title">Title: </h1>
-        <div className="markdown-preview"> note content (body) </div>
+        <h1 className="preview-title">{activeNote.title}</h1>
+        <div className="markdown-preview">{activeNote.body}</div>
       </div>
 
       <div className="app-main-note-edit">
@@ -27,7 +27,7 @@ export default function Main({ activeNote, onUpdateNote }) {
 
         <textarea 
           id="body" 
-          placeholder="write your Markdown note here..." 
+          placeholder="write your note here (Markdown automatically converted to HTML)..." 
           value={activeNote.body} 
           onChange={(event) => onEditField("body", event.target.value)} 
         />
