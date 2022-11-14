@@ -17,3 +17,10 @@
   width: 90%;
   /* height:50% */
 }
+
+#save-note-btn {
+  margin-top: 15px;
+  padding: 10px;
+  border: 2px solid lightgrey;
+  border-radius: 5px
+}
