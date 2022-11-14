@@ -1,0 +1,19 @@
+.markdown-input-container {
+  /* height: 30vh; */
+  text-align: center
+}
+
+.markdown-input {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  line-height: 30px
+}
+
+#markdown-input-title {
+  width: 45%;
+}
+
+#markdown-input-content {
+  width: 90%;
+  /* height:50% */
+}

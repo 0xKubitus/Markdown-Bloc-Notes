@@ -3,8 +3,7 @@ export default function Sidebar({ notes }) {
     <div className="app-sidebar">
 
       <div className="app-sidebar-header">
-        <h1>0xKubitus Notes</h1>
-        <button>Add</button>
+        <button>Create a new Note</button>
       </div>
 
       <div className="app-sidebar-notes">
