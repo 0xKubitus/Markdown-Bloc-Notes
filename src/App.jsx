@@ -1,14 +1,16 @@
 import {useState} from "react";
 import MarkdownInput from './components/MarkdownInput/MarkdownInput';
 import NoteDisplay from './components/NoteDisplay/NoteDisplay';
+import { getFirstLocalStorageItemTitle, getFirstLocalStorageItemContent } from './helpers.js'
 // import Sidebar from './components/Sidebar';
 
 import './App.css';
 
 
 function App() {
-    const [currentNoteTitle, setCurrentNoteTitle] = useState('');
-    const [currentMarkdownContent, setCurrentMarkdownContent] = useState('');
+    // const [currentNoteTitle, setCurrentNoteTitle] = useState('');
+    const [currentNoteTitle, setCurrentNoteTitle] = useState( () => getFirstLocalStorageItemTitle() );
+    const [currentMarkdownContent, setCurrentMarkdownContent] = useState( () => getFirstLocalStorageItemContent() );
 
     const title = JSON.stringify(currentNoteTitle)
     const content = JSON.stringify(currentMarkdownContent)

@@ -18,7 +18,8 @@ const MarkdownInput = ({editTitleInput, editNoteContent, saveNote}) => {
           </div>
 
           <div>
-              <TextareaAutosize id="markdown-input-content" className="markdown-input" placeholder="Your Markdown Note's content..." onChange={editNoteContent} autoFocus />
+              <TextareaAutosize id="markdown-input-content" className="markdown-input" placeholder="Start typing your Markdown content here" onChange={editNoteContent} autoFocus />
+              {/* <textarea id="markdown-input-content" className="markdown-input" placeholder="Your Markdown Note's content..." rows="5" onChange={editNoteContent} autoFocus /> */}
           </div>
 
           <button id="save-note-btn" onClick={saveNote}>Save Note</button>
