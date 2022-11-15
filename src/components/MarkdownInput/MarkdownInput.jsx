@@ -13,20 +13,6 @@ const MarkdownInput = ({editTitleInput, editNoteContent, saveNote}) => {
   return (
       <div className="markdown-input-container">
 
-        {/* ------------------- */}
-        {/* <form onSubmit={saveNote} >
-                <label>Enter your note's title:
-                    <input type="text" id="markdown-input-title" className="markdown-input" placeholder="new Note's title (no Markdown here)" onChange={editTitleInput} />
-                </label>
-          <input type="submit" />
-        </form> */}
-        {/* ------------------- */}
-
-
-
-
-
-
           <div>
               <input type="text" id="markdown-input-title" className="markdown-input" placeholder="new Note's title (no Markdown here)" onChange={editTitleInput} />
           </div>

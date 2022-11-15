@@ -10,6 +10,10 @@ function App() {
     const [currentNoteTitle, setCurrentNoteTitle] = useState('');
     const [currentMarkdownContent, setCurrentMarkdownContent] = useState('');
 
+    const title = JSON.stringify(currentNoteTitle)
+    const content = JSON.stringify(currentMarkdownContent)
+
+
     // GETTING AND SAVING DATA FROM MarkdownInput.jsx COMPONENT AS STATE (to be passed to and used by 'NoteDisplay'):
     const editTitleInput = event => {
         // 👇️ use 'event.target.value' passed from 'MarkdownInput.jsx':
@@ -17,16 +21,31 @@ function App() {
         // console.log(currentNoteTitle);
     }
 
-      const editNoteContent = event => {
+    const editNoteContent = event => {
         // 👇️ use 'event.target.value' passed from 'MarkdownInput.jsx':
         setCurrentMarkdownContent(event.target.value)
         // console.log(currentMarkdownContent);
     }
 
     const saveNote = event => {
-      event.preventDefault();
-      alert(`Title: ${currentNoteTitle}`)
-  }
+        event.preventDefault();
+        // console.log(`currentNoteTitle = ${currentNoteTitle}, currentMarkdownContent = ${currentMarkdownContent}`);
+
+        // USE LOCALSTORAGE TO SAVE THE NOTE:
+        localStorage.setItem(title, content);
+        alert(`Note successfully saved as: "${currentNoteTitle}".`)
+    }
+
+    // TO CHECK THAT NOTE HAS SUCCESSFULLY BEEN SAVED:
+    // const noteSavedLocally = localStorage.getItem(title);
+    // const savedNoteInString = JSON.parse(noteSavedLocally)
+    // console.log(savedNoteInString);
+
+    // TO REMOVE AN ITEM FROM LOCALSTORAGE:
+    // localStorage.removeItem('theTitle');
+
+    // TO DELETE ALL ENTRIES FROM LOCALSTORAGE:
+    // localStorage.clear();
 
     // --------------------------------------------------------------------
 
