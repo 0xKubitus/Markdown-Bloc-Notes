@@ -8,25 +8,25 @@ import './App.css';
 
 function App() {
   const [currentNoteTitle, setCurrentNoteTitle] = useState('');
-  const [currentNoteContent, setCurrentNoteContent] = useState('');
+  const [currentMarkdownContent, setCurrentMarkdownContent] = useState('');
 
   const saveTitleInput = event => {
       // 👇️ use 'event.target.value' passed from Child component:
       setCurrentNoteTitle(event.target.value)
-      console.log(currentNoteTitle);
+      // console.log(currentNoteTitle);
   }
 
     const saveNoteContent = event => {
       // 👇️ use 'event.target.value' passed from Child component:
-      setCurrentNoteContent(event.target.value)
-      console.log(currentNoteContent);
+      setCurrentMarkdownContent(event.target.value)
+      // console.log(currentMarkdownContent);
   }
 
   return (
     <div className="App">
 
         <div className="main-container">
-            <NoteDisplay currentNoteTitle={currentNoteTitle} currentNoteContent={currentNoteContent} />
+            <NoteDisplay currentNoteTitle={currentNoteTitle} currentMarkdownContent={currentMarkdownContent} />
             <br />
             <hr />
             <MarkdownInput saveTitleInput={saveTitleInput} saveNoteContent={saveNoteContent} />
