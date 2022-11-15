@@ -7,20 +7,31 @@ import './App.css';
 
 
 function App() {
-  const [currentNoteTitle, setCurrentNoteTitle] = useState('');
-  const [currentMarkdownContent, setCurrentMarkdownContent] = useState('');
+    const [currentNoteTitle, setCurrentNoteTitle] = useState('');
+    const [currentMarkdownContent, setCurrentMarkdownContent] = useState('');
 
-  const saveTitleInput = event => {
-      // 👇️ use 'event.target.value' passed from Child component:
-      setCurrentNoteTitle(event.target.value)
-      // console.log(currentNoteTitle);
+    // GETTING AND SAVING DATA FROM MarkdownInput.jsx COMPONENT AS STATE (to be passed to and used by 'NoteDisplay'):
+    const editTitleInput = event => {
+        // 👇️ use 'event.target.value' passed from 'MarkdownInput.jsx':
+        setCurrentNoteTitle(event.target.value)
+        // console.log(currentNoteTitle);
+    }
+
+      const editNoteContent = event => {
+        // 👇️ use 'event.target.value' passed from 'MarkdownInput.jsx':
+        setCurrentMarkdownContent(event.target.value)
+        // console.log(currentMarkdownContent);
+    }
+
+    const saveNote = event => {
+
+
+      console.log();
   }
 
-    const saveNoteContent = event => {
-      // 👇️ use 'event.target.value' passed from Child component:
-      setCurrentMarkdownContent(event.target.value)
-      // console.log(currentMarkdownContent);
-  }
+    // --------------------------------------------------------------------
+
+  
 
   return (
     <div className="App">
@@ -29,7 +40,7 @@ function App() {
             <NoteDisplay currentNoteTitle={currentNoteTitle} currentMarkdownContent={currentMarkdownContent} />
             <br />
             <hr />
-            <MarkdownInput saveTitleInput={saveTitleInput} saveNoteContent={saveNoteContent} />
+            <MarkdownInput editTitleInput={editTitleInput} editNoteContent={editNoteContent} />
         </div>
 
         {/* <Sidebar notes={notes} /> */}
