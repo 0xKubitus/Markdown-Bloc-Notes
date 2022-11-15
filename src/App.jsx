@@ -7,7 +7,20 @@ import './App.css';
 
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [currentNoteTitle, setCurrentNoteTitle] = useState('');
+  const [currentNoteContent, setCurrentNoteContent] = useState('');
+
+  const saveTitleInput = event => {
+      // 👇️ use 'event.target.value' passed from Child component:
+      setCurrentNoteTitle(event.target.value)
+      console.log(currentNoteTitle);
+  }
+
+    const saveNoteContent = event => {
+      // 👇️ use 'event.target.value' passed from Child component:
+      setCurrentNoteContent(event.target.value)
+      console.log(currentNoteContent);
+  }
 
   return (
     <div className="App">
@@ -16,7 +29,7 @@ function App() {
             <NoteDisplay />
             <br />
             <hr />
-            <MarkdownInput />
+            <MarkdownInput saveTitleInput={saveTitleInput} saveNoteContent={saveNoteContent} />
         </div>
 
         {/* <Sidebar notes={notes} /> */}
