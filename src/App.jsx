@@ -24,9 +24,8 @@ function App() {
     }
 
     const saveNote = event => {
-
-
-      console.log();
+      event.preventDefault();
+      alert(`Title: ${currentNoteTitle}`)
   }
 
     // --------------------------------------------------------------------
@@ -40,7 +39,7 @@ function App() {
             <NoteDisplay currentNoteTitle={currentNoteTitle} currentMarkdownContent={currentMarkdownContent} />
             <br />
             <hr />
-            <MarkdownInput editTitleInput={editTitleInput} editNoteContent={editNoteContent} />
+            <MarkdownInput editTitleInput={editTitleInput} editNoteContent={editNoteContent} saveNote={saveNote} />
         </div>
 
         {/* <Sidebar notes={notes} /> */}
