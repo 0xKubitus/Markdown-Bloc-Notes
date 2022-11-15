@@ -26,7 +26,7 @@ function App() {
     <div className="App">
 
         <div className="main-container">
-            <NoteDisplay />
+            <NoteDisplay currentNoteTitle={currentNoteTitle} currentNoteContent={currentNoteContent} />
             <br />
             <hr />
             <MarkdownInput saveTitleInput={saveTitleInput} saveNoteContent={saveNoteContent} />
