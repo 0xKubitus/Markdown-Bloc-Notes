@@ -1,7 +1,7 @@
 // import ... from '...';
 
 
-const Sidebar = () => { 
+const Sidebar = ( { notes } ) => { 
   
   return (
     <div className="app-sidebar">
@@ -10,16 +10,19 @@ const Sidebar = () => {
         <button>Create new Note</button>
       </div>
       <div className="app-sidebar-notes">
-        <div className="app-sidebar-note">
-          <div className="sidebar-note-title">
-            <strong>TITLE</strong>
-            <button>Delete</button>
-          </div>
-          
-          <p>Note preview</p>
+        {notes.map((note) =>(
+          <div className="app-sidebar-note">
+            <div className="sidebar-note-title">
+              <strong>TITLE</strong>
+              <button>Delete</button>
+            </div>
+            
+            <p>Note preview</p>
 
-          <small className="note-meta">Last modified [date]</small>
-        </div>
+            <small className="note-meta">Last modified [date]</small>
+          </div>
+        ))}
+
       </div>
     </div>
 

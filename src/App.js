@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState/*, useEffect*/} from "react";
 import Sidebar from './Sidebar';
 import Main from './Main';
 // import uuid from "react-uuid";
@@ -6,10 +6,11 @@ import './App.css';
 
 
 const App = () => {
+  const [notes, setNotes] = useState([])
  
   return (
     <div className="App">
-      <Sidebar />
+      <Sidebar notes={notes} />
       <Main />
     </div>
   )
