@@ -1,7 +1,7 @@
 import {useState} from "react";
 import MarkdownInput from './components/MarkdownInput/MarkdownInput';
 import NoteDisplay from './components/NoteDisplay/NoteDisplay';
-import { getFirstLocalStorageItemTitle, getFirstLocalStorageItemContent } from './helpers.js'
+import { getFirstLocalStorageItemTitle, getFirstLocalStorageItemContent, getAllSavedNotes } from './helpers.js'
 import Sidebar from './components/Sidebar/Sidebar';
 
 import './App.css';
@@ -10,6 +10,20 @@ import './App.css';
 function App() {
     const [currentNoteTitle, setCurrentNoteTitle] = useState( () => getFirstLocalStorageItemTitle() || '' );
     const [currentMarkdownContent, setCurrentMarkdownContent] = useState( () => getFirstLocalStorageItemContent() || '' );
+    const [notes, setNotes] = useState( () => getAllSavedNotes() || [{'': ''}])
+
+    // FUNCTION TO SET STATE OF ALL NOTES SAVED IN LOCALSTORAGE:
+    function getAllSavedNotes() { 
+      const noteList = [];
+
+      for(let i=0; i<localStorage.length; i++) {
+        let key = localStorage.key(i);
+        let note = {key: localStorage.getItem(key)};
+        noteList.push(note)
+      }
+      return noteList
+    }
+    console.log('notes =', notes);
 
     const title = JSON.stringify(currentNoteTitle)
     const content = JSON.stringify(currentMarkdownContent)
@@ -35,6 +49,11 @@ function App() {
 
         // USE LOCALSTORAGE TO SAVE THE NOTE:
         localStorage.setItem(title, content);
+
+        // ALSO ADD THIS NOTE IN THE STATE FOR THE LIST OF ALL SAVED NOTES:
+        // setNotes([...notes, {currentNoteTitle: currentMarkdownContent}])
+        // console.log('notes =', notes);
+
         alert(`Note successfully saved as: "${currentNoteTitle}".`)
     }
 
@@ -57,7 +76,7 @@ function App() {
     <div className="App">
 
         <div className="notelist-container">
-            <Sidebar /* notes={notes} */  />
+            <Sidebar notes={notes}  />
         </div>
 
         <div className="main-container">

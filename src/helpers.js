@@ -23,3 +23,4 @@ export function getFirstLocalStorageItemTitle() {
 export function getFirstLocalStorageItemContent() {  
     return JSON.parse(lastEntryContent);
 }
+
