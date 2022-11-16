@@ -7,10 +7,14 @@ import './App.css';
 
 const App = () => {
   const [notes, setNotes] = useState([])
+
+  const onAddNote = () => {
+    console.log("add");
+  }
  
   return (
     <div className="App">
-      <Sidebar notes={notes} />
+      <Sidebar notes={notes} onAddNote={onAddNote} />
       <Main />
     </div>
   )

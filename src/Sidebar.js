@@ -1,13 +1,13 @@
 // import ... from '...';
 
 
-const Sidebar = ( { notes } ) => { 
+const Sidebar = ( { notes, onAddNote } ) => { 
   
   return (
     <div className="app-sidebar">
       <div className="app-sidebar-header">
         <h1>0xKubitus Notes</h1>
-        <button>Create new Note</button>
+        <button onClick={onAddNote}>Create new Note</button>
       </div>
       <div className="app-sidebar-notes">
         {notes.map((note) =>(
