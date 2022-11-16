@@ -1,70 +1,18 @@
 import {useEffect, useState} from "react";
-import uuid from "react-uuid";
 import Sidebar from './Sidebar';
 import Main from './Main';
-
+// import uuid from "react-uuid";
 import './App.css';
 
 
-function App() {
-  const [notes, setNotes] = useState(JSON.parse(localStorage.notes) || []);
-  const [activeNote, setActiveNote] = useState(false);
-
-/*  AUTOMATIC LOCALSTORAGE SAVING (no click button):
-  useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes)); 
-  }, [notes]);
-*/
-
-  const onAddNote = () => {
-    const newNote = {
-      id: uuid(),
-      title: "Untitled Note",
-      body: "",
-      lastModified: Date.now(),
-    };
-
-    setNotes([newNote, ...notes]);
-  };
-
-  const onUpdateNote = (updatedNote) => {
-    const updatedNotesArray = notes.map((note) => {
-      if(note.id === activeNote) {
-        return updatedNote;
-      }
-
-      return note;
-    });
-
-    setNotes(updatedNotesArray);
-  };
-
-  const onDeleteNote = (idToDelete) => {
-    setNotes(notes.filter((note) => note.id !== idToDelete))
-  };
-
-  const onSaveNote = () => {
-    localStorage.setItem("notes", JSON.stringify(notes)); 
-    console.log(notes)
-  };
-
-  const getActiveNote = () => {
-    return notes.find((note) => note.id === activeNote);
-  };
-
+const App = () => {
+ 
   return (
     <div className="App">
-      <Sidebar 
-        notes={notes} 
-        onAddNote={onAddNote} 
-        onDeleteNote={onDeleteNote} 
-        activeNote={activeNote}
-        setActiveNote={setActiveNote}        
-      />
-      <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} onSaveNote={onSaveNote} />
+      <Sidebar />
+      <Main />
     </div>
-  );  
-
+  )
 };
 
 

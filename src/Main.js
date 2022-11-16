@@ -1,44 +1,28 @@
-import Showdown from 'showdown';
-const converter = new Showdown.Converter();
+// import ... from '...';
 
-export default function Main({ activeNote, onUpdateNote, onSaveNote }) {
-  const onEditField = (key, value) => {
-    onUpdateNote( {
-      ...activeNote,
-      [key]: value,
-      lastModified: Date.now(),
-    });
-  };
 
-  function createMarkup() {
-    return {__html: converter.makeHtml(activeNote.body)};
-  };
-
-  if(!activeNote) return <div className="no-active-note">No note selected yet</div>
+const Main = () => {
+ 
 
   return (
-    <div className="app-main">
+    <div className="app-main"> 
       <div className="app-main-note-preview">
-        <h1 className="preview-title">{activeNote.title}</h1>
-        <div className="markdown-preview" dangerouslySetInnerHTML={createMarkup()} />
+        <h1 className="preview-title">TITLE</h1>
+        <div className="markdown-preview">note preview</div> 
       </div>
 
       <div className="app-main-note-edit">
         <input type="text" 
           id="title" 
-          value={activeNote.title} 
-          onChange={(event) => onEditField("title", event.target.value)} 
           autoFocus 
         />
 
         <textarea 
           id="body" 
           placeholder="write your note here (Markdown automatically converted to HTML)..." 
-          value={activeNote.body} 
-          onChange={(event) => onEditField("body", event.target.value)} 
         />
 
-        <button onClick={onSaveNote}>Save Note</button>
+        <button>Save Note</button>
       </div>
     </div>
 
@@ -46,3 +30,4 @@ export default function Main({ activeNote, onUpdateNote, onSaveNote }) {
 
 };
 
+export default Main;
