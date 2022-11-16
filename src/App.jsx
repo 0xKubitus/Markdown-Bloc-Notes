@@ -8,7 +8,6 @@ import './App.css';
 
 
 function App() {
-    // const [currentNoteTitle, setCurrentNoteTitle] = useState('');
     const [currentNoteTitle, setCurrentNoteTitle] = useState( () => getFirstLocalStorageItemTitle() || '' );
     const [currentMarkdownContent, setCurrentMarkdownContent] = useState( () => getFirstLocalStorageItemContent() || '' );
 
@@ -52,7 +51,7 @@ function App() {
 
     // --------------------------------------------------------------------
 
-  
+
 
   return (
     <div className="App">
