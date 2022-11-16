@@ -2,19 +2,20 @@ import {useState} from "react";
 import MarkdownInput from './components/MarkdownInput/MarkdownInput';
 import NoteDisplay from './components/NoteDisplay/NoteDisplay';
 import { getFirstLocalStorageItemTitle, getFirstLocalStorageItemContent } from './helpers.js'
-// import Sidebar from './components/Sidebar';
+import Sidebar from './components/Sidebar/Sidebar';
 
 import './App.css';
 
 
 function App() {
     // const [currentNoteTitle, setCurrentNoteTitle] = useState('');
-    const [currentNoteTitle, setCurrentNoteTitle] = useState( () => getFirstLocalStorageItemTitle() );
-    const [currentMarkdownContent, setCurrentMarkdownContent] = useState( () => getFirstLocalStorageItemContent() );
+    const [currentNoteTitle, setCurrentNoteTitle] = useState( () => getFirstLocalStorageItemTitle() || '' );
+    const [currentMarkdownContent, setCurrentMarkdownContent] = useState( () => getFirstLocalStorageItemContent() || '' );
 
     const title = JSON.stringify(currentNoteTitle)
     const content = JSON.stringify(currentMarkdownContent)
 
+    // const notesList = [];
 
     // GETTING AND SAVING DATA FROM MarkdownInput.jsx COMPONENT AS STATE (to be passed to and used by 'NoteDisplay'):
     const editTitleInput = event => {
@@ -56,14 +57,16 @@ function App() {
   return (
     <div className="App">
 
+        <div className="notelist-container">
+            <Sidebar /* notes={notes} */  />
+        </div>
+
         <div className="main-container">
             <NoteDisplay currentNoteTitle={currentNoteTitle} currentMarkdownContent={currentMarkdownContent} />
             <br />
             <hr />
             <MarkdownInput editTitleInput={editTitleInput} editNoteContent={editNoteContent} saveNote={saveNote} />
         </div>
-
-        {/* <Sidebar notes={notes} /> */}
     </div>
   );  
 };

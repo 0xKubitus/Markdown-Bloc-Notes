@@ -1,8 +1,12 @@
-export default function Sidebar({ notes }) {
+import './styles.css'
+
+export default function Sidebar(/*{ notes }*/) {
   return (
     <div className="app-sidebar">
 
-      <div className="app-sidebar-header">
+      <p>sidebar</p>
+
+      {/* <div className="app-sidebar-header">
         <button>Create a new Note</button>
       </div>
 
@@ -21,7 +25,7 @@ export default function Sidebar({ notes }) {
           
           </div>
         ))}
-      </div>
+      </div> */}
 
     </div>
   );
