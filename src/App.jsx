@@ -51,7 +51,7 @@ function App() {
         localStorage.setItem(title, content);
 
         // ALSO ADD THIS NOTE IN THE STATE FOR THE LIST OF ALL SAVED NOTES:
-        // setNotes([...notes, {currentNoteTitle: currentMarkdownContent}])
+        // setNotes([...notes, {key: content}])
         // console.log('notes =', notes);
 
         alert(`Note successfully saved as: "${currentNoteTitle}".`)

@@ -3,32 +3,44 @@ import useState from 'react'
 import './styles.css'
 
 export default function Sidebar({notes}) {
+  // return (
+
+  //   <div className="app-sidebar">
+
+  //     <h3>MY NOTES:</h3>
 
 
-  return (
-    // <p>sidebar</p>
+  //     <div className="app-sidebar-notes">
+  //           {notes.map((note) => (
+  //             <div className="app-sidebar-note">
+  //               <div className="sidebar-note-title" style={{display: 'flex'}}>
+  //                 <strong>TITLE</strong>
+  //                 <button style={{paddingLeft: '15px'}}>Delete</button>
+  //               </div>
+  //               <div>
+  //                 <p>{note.key}</p>
+  //               </div>
+  //             </div>
+  //           ))}        
+  //     </div>
+  //   </div>
 
-    <div className="app-sidebar">
-
-      <h3>MY NOTES:</h3>
+  // )
 
 
-      <div className="app-sidebar-notes">
-            {notes.map((note) => (
-              <div className="app-sidebar-note">
-                <div className="sidebar-note-title" style={{display: 'flex'}}>
-                  <strong>TITLE</strong>
-                  <button style={{paddingLeft: '15px'}}>Delete</button>
-                </div>
-                <div>
-                  <p>{note.key}</p>
-                </div>
-              </div>
-            ))}        
+  for(let i=0; i<localStorage.length; i++) {
+    let key = localStorage.key(i);
+
+    return (
+      <div>
+        `${key}: ${localStorage.getItem(key)}`
       </div>
-    </div>
+    );
+  }
 
-  )
+
+
+
 }
 
 
