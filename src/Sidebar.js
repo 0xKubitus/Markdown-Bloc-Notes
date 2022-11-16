@@ -13,13 +13,17 @@ const Sidebar = ( { notes, onAddNote } ) => {
         {notes.map((note) =>(
           <div className="app-sidebar-note">
             <div className="sidebar-note-title">
-              <strong>TITLE</strong>
+              <strong>{note.title}</strong>
               <button>Delete</button>
             </div>
             
-            <p>Note preview</p>
+            <p>{note.body && note.body.substr(0, 100) + '...'}</p>
 
-            <small className="note-meta">Last modified [date]</small>
+            <small className="note-meta">Last modified {new Date(note.lastModified).toLocaleDateString("fr-FR", {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </small>
           </div>
         ))}
 
