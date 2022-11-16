@@ -18,10 +18,20 @@ const App = () => {
 
     setNotes([newNote, ...notes]);
   }
+
+  const onDeleteNote = (idToDelete) => {
+    setNotes(notes.filter((note) => note.id !== idToDelete));
+    // the above .filter function verifies for each note if the condition that follows is thruthy or not...
+    // If not, it will remove the item from the 'notes' state array.
+  }
  
   return (
     <div className="App">
-      <Sidebar notes={notes} onAddNote={onAddNote} />
+      <Sidebar 
+        notes={notes} 
+        onAddNote={onAddNote} 
+        onDeleteNote={onDeleteNote}
+      />
       <Main />
     </div>
   )

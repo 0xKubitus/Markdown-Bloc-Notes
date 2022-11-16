@@ -1,7 +1,7 @@
 // import ... from '...';
 
 
-const Sidebar = ( { notes, onAddNote } ) => { 
+const Sidebar = ( { notes, onAddNote, onDeleteNote } ) => { 
   
   return (
     <div className="app-sidebar">
@@ -14,10 +14,10 @@ const Sidebar = ( { notes, onAddNote } ) => {
           <div className="app-sidebar-note">
             <div className="sidebar-note-title">
               <strong>{note.title}</strong>
-              <button>Delete</button>
+              <button onClick={() => onDeleteNote(note.id)}>Delete</button>
             </div>
             
-            <p>{note.body && note.body.substr(0, 100) + '...'}</p>
+            <p>{note.body && note.body.substr(0, 100) + '...'}</p> {/* => If there is a note.body, return only the 1st 100characters */}
 
             <small className="note-meta">Last modified {new Date(note.lastModified).toLocaleDateString("fr-FR", {
                 hour: "2-digit",
