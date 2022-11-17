@@ -26,6 +26,7 @@ const Sidebar = ( { notes, onAddNote, onDeleteNote, activeNote, setActiveNote } 
             <small className="note-meta">Last modified {new Date(note.lastModified).toLocaleDateString("fr-FR", {
                 hour: "2-digit",
                 minute: "2-digit",
+                second: "2-digit",
               })}
             </small>
           </div>
