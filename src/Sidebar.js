@@ -3,6 +3,8 @@
 
 const Sidebar = ( { notes, onAddNote, onDeleteNote, activeNote, setActiveNote } ) => { 
   
+  const sortedNotes = notes.sort((a, b) => b.lastModified - a.lastModified)
+
   return (
     <div className="app-sidebar">
       <div className="app-sidebar-header">
@@ -10,7 +12,7 @@ const Sidebar = ( { notes, onAddNote, onDeleteNote, activeNote, setActiveNote } 
         <button onClick={onAddNote}>Create new Note</button>
       </div>
       <div className="app-sidebar-notes">
-        {notes.map((note) =>(
+        {sortedNotes.map((note) =>(
           <div 
             className={`app-sidebar-note ${note.id === activeNote && "active"}`} 
             //  conditionnal className: if note.id corresponds to the one saved in activeNote state, then add the 'active' class 
