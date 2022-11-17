@@ -25,6 +25,13 @@ const App = () => {
     // the above .filter function verifies for each note if the condition that follows is thruthy or not...
     // If not, it will remove the item from the 'notes' state array.
   }
+
+  // RETURN THE ENTIRE OBJECT FROM OUR 'notes' STATE WHICH 'id' MATCHES THE ONE FROM 'activeNote':
+  const getActiveNote = () => {
+    return notes.find((note) => note.id === activeNote);
+  }
+
+
  
   return (
     <div className="App">
@@ -35,7 +42,7 @@ const App = () => {
         activeNote={activeNote}
         setActiveNote={setActiveNote}
       />
-      <Main />
+      <Main activeNote={getActiveNote()} />
     </div>
   )
 };
