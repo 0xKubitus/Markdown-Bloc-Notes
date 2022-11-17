@@ -1,4 +1,4 @@
-import {useState/*, useEffect*/} from "react";
+import {useState, useEffect} from "react";
 import uuid from "react-uuid";
 import Sidebar from './Sidebar';
 import Main from './Main';
@@ -6,8 +6,13 @@ import './App.css';
 
 
 const App = () => {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(localStorage.notes ? JSON.parse(localStorage.notes) : []);
   const [activeNote, setActiveNote] = useState(false);
+
+  // side effect for when the notes are changing (new note, note update, note deleted) => localStorage
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes))
+  }, [notes]);
 
   const onAddNote = () => {
     const newNote = {
