@@ -18,21 +18,34 @@ const App = () => {
     };
 
     setNotes([newNote, ...notes]);
-  }
+  };
+
+
+  const onUpdateNote = (updatedNote) => {
+    const updatedNotesArray = notes.map((note) => {
+      if(note.id === activeNote) {
+        return updatedNote;
+      } 
+        return note;
+    });
+    setNotes(updatedNotesArray);
+  };
+
 
   const onDeleteNote = (idToDelete) => {
     setNotes(notes.filter((note) => note.id !== idToDelete));
     // the above .filter function verifies for each note if the condition that follows is thruthy or not...
     // If not, it will remove the item from the 'notes' state array.
-  }
+  };
+
 
   // RETURN THE ENTIRE OBJECT FROM OUR 'notes' STATE WHICH 'id' MATCHES THE ONE FROM 'activeNote':
   const getActiveNote = () => {
     return notes.find((note) => note.id === activeNote);
-  }
+  };
 
 
- 
+
   return (
     <div className="App">
       <Sidebar 
@@ -42,7 +55,7 @@ const App = () => {
         activeNote={activeNote}
         setActiveNote={setActiveNote}
       />
-      <Main activeNote={getActiveNote()} />
+      <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} />
     </div>
   )
 };
