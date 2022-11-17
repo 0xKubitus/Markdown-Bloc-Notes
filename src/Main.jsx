@@ -22,8 +22,6 @@ const Main = ({ activeNote, onUpdateNote }) => {
     return <div className="no-active-note">No note selected</div>
   } else {
     const convertedContent = converter.makeHtml(activeNote.body)
-    // console.log('convertedContent = ', convertedContent);
-    // console.log('typeof convertedContent = ', typeof convertedContent); // => 'string'
 
     const createMarkup = () => {
       return {__html: convertedContent}
@@ -34,13 +32,12 @@ const Main = ({ activeNote, onUpdateNote }) => {
         <div className="app-main-note-preview">
           <h1 className="preview-title">{activeNote.title}</h1>
           <div className="markdown-preview"dangerouslySetInnerHTML={createMarkup()}></div>
-          {/* <ReactMarkdown className="markdown-preview">{activeNote.body}</ReactMarkdown> */}
         </div>
 
         <div className="app-main-note-edit">
           <input type="text" 
             id="title" 
-            value={/*activeNote && */ activeNote.title}
+            value={activeNote.title}
             onChange={(event) => onEditField("title", event.target.value)}
             autoFocus 
           />
@@ -48,7 +45,7 @@ const Main = ({ activeNote, onUpdateNote }) => {
           <textarea 
             id="body" 
             placeholder="write your note here (Markdown automatically converted to HTML)..." 
-            value={/*activeNote &&  */ activeNote.body}
+            value={activeNote.body}
             onChange={(event) => onEditField("body", event.target.value)}
           />
 
@@ -58,7 +55,7 @@ const Main = ({ activeNote, onUpdateNote }) => {
     );
 
     };
-    
+
   }
 
 export default Main;
