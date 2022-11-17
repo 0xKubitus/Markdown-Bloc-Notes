@@ -1,7 +1,7 @@
 // import ... from '...';
 
 
-const Sidebar = ( { notes, onAddNote, onDeleteNote } ) => { 
+const Sidebar = ( { notes, onAddNote, onDeleteNote, activeNote, setActiveNote } ) => { 
   
   return (
     <div className="app-sidebar">
@@ -11,7 +11,11 @@ const Sidebar = ( { notes, onAddNote, onDeleteNote } ) => {
       </div>
       <div className="app-sidebar-notes">
         {notes.map((note) =>(
-          <div className="app-sidebar-note">
+          <div 
+            className={`app-sidebar-note ${note.id === activeNote && "active"}`} 
+            //  conditionnal className: if note.id corresponds to the one saved in activeNote state, then add the 'active' class 
+            onClick={() => setActiveNote(note.id)}
+          >
             <div className="sidebar-note-title">
               <strong>{note.title}</strong>
               <button onClick={() => onDeleteNote(note.id)}>Delete</button>
