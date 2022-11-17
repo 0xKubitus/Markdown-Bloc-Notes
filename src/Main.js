@@ -14,11 +14,13 @@ const Main = ({ activeNote }) => {
       <div className="app-main-note-edit">
         <input type="text" 
           id="title" 
+          value={activeNote && activeNote.title}
           autoFocus 
         />
 
         <textarea 
           id="body" 
+          value={activeNote && activeNote.body}
           placeholder="write your note here (Markdown automatically converted to HTML)..." 
         />
 
