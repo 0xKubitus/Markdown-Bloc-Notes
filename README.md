@@ -182,7 +182,7 @@ npm start
 ```
 
 That's it!  
-You have access to my markdown Notepad app :ok_hand:
+You have access to my markdown Notepad app :fire:
 
 </br>
 
