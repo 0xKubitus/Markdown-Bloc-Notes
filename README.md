@@ -34,7 +34,6 @@
 
 
 
-
 <details>
 <summary>
 CLICK ME TO READ THE HACKING PROJECT INSTRUCTIONS (in English)
